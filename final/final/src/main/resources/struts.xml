@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="conststruts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="10485760" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!--json配置 -->
+	<package name="lee222" namespace="/" extends="json-default">
+		<!--炎青的json配置 -->
+		<action name="guitar_*" class="Action.GuitarAction" method="{1}">
+			<result type="json" name="jsonArray">
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+				<param name="root">jsonArray</param>
+			</result>
+			<result type="json" name="maps">
+				<param name="noCache">true</param>
+				<param name="contentType">text/html</param>
+				<param name="root">maps</param>
+			</result>
+		</action>
+	</package>
+
+
+
+
+
+	<!-- Struts2的所有Action都需位于package下 -->
+	<package name="lee" extends="struts-default">
+
+
+		<action name="*">
+			<result>/WEB-INF/content/{1}.jsp</result>
+		</action>
+	</package>
+</struts>
